@@ -20,7 +20,7 @@ git@github.com:juanfran0399/SimuladorUDG.git
 
  2.  **Entrar en el directorio del proyecto**
  ```bash
- cd ScrumPlanner
+ cd SimuladorUDG
  ```
  
  3. **Instalar las dependencias**
