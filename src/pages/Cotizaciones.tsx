@@ -5,6 +5,11 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import jsPDF from 'jspdf'
 import 'jspdf-autotable'
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup
+} from '@/components/ui/resizable'
 
 const CotizadorNegocios: React.FC = () => {
   const [quoteData, setQuoteData] = useState({
@@ -47,65 +52,80 @@ const CotizadorNegocios: React.FC = () => {
   return (
     <Layout>
       <div className='container'>
-        <div className='form-container'>
-          {Object.keys(quoteData).map((key) => (
-            <div key={key} className='form-group'>
-              <Label htmlFor={key}>{key.replace(/([A-Z])/g, ' $1').toUpperCase()}</Label>
-              <Input
-                type='text'
-                id={key}
-                name={key}
-                value={quoteData[key]}
-                onChange={handleChange}
-                placeholder={`Ingrese ${key.replace(/([A-Z])/g, ' $1').toLowerCase()}`}
-              />
+        <ResizablePanelGroup
+          direction='horizontal'
+          className='min-h-[200px] w-full' // Ocupa todo el ancho disponible
+        >
+          <ResizablePanel defaultSize={25}>
+            <div className='form-container'>
+              <div className='input-grid'>
+                {Object.keys(quoteData).map((key) => (
+                  <div key={key} className='form-group'>
+                    <Label htmlFor={key}>{key.replace(/([A-Z])/g, ' $1').toUpperCase()}</Label>
+                    <Input
+                      type='text'
+                      id={key}
+                      name={key}
+                      value={quoteData[key]}
+                      onChange={handleChange}
+                      placeholder={`Ingrese ${key.replace(/([A-Z])/g, ' $1').toLowerCase()}`}
+                    />
+                  </div>
+                ))}
+              </div>
+              <Button onClick={generatePDF}>Generar PDF</Button>
             </div>
-          ))}
-          <Button onClick={generatePDF}>Generar PDF</Button>
-        </div>
-        <div className='pdf-preview'>
-          <h1 className='title'>COTIZACIONES</h1> {/* Título con mayor tamaño */}
-          <h2>Vista Previa</h2>
-          {pdfUri
-            ? (
-              <iframe
-                src={pdfUri}
-                width='100%'
-                height='100%'
-                style={{ border: 'none' }}
-                title='PDF Preview'
-              />
-              )
-            : (
-              <p>No hay vista previa disponible. Genera el PDF para verlo aquí.</p>
-              )}
-        </div>
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel defaultSize={75}>
+            <div className='pdf-preview'>
+              <h1 className='title'>COTIZACIONES</h1>
+              <h2>Vista Previa</h2>
+              {pdfUri
+                ? (
+                  <iframe
+                    src={pdfUri}
+                    width='100%'
+                    height='100%'
+                    style={{ border: 'none' }}
+                    title='PDF Preview'
+                  />
+                  )
+                : (
+                  <p>No hay vista previa disponible. Genera el PDF para verlo aquí.</p>
+                  )}
+            </div>
+          </ResizablePanel>
+        </ResizablePanelGroup>
       </div>
+
       <style jsx>{`
         .container {
           display: flex;
-          justify-content: space-between;
-          padding: 20px;
-          max-width: 1200px;
-          margin: auto;
+          justify-content: flex-start; /* Cambiar a alineación izquierda */
+          padding: 0; /* Sin padding */
+          max-width: 100vw; /* Ancho máximo de la ventana */
           height: 80vh; /* Ajustar la altura del contenedor */
         }
 
         .form-container {
-          flex: 1;
-          margin-right: 20px;
-          max-width: 400px;
+          padding: 20px; /* Espaciado interno */
+          height: 100%; /* Altura completa del panel */
+        }
+
+        .input-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+          gap: 10px; /* Espacio entre inputs */
         }
 
         .form-group {
-          margin-bottom: 15px;
+          width: 100%; /* Asegurar que el input ocupe todo el espacio disponible */
         }
 
         .pdf-preview {
-          flex: 2; /* Dar más espacio a la vista previa */
-          margin-left: 20px;
-          position: relative; /* Posicionamiento relativo para iframe */
-          height: 100%; /* Altura completa */
+          padding: 20px; /* Espacio alrededor de la vista previa */
+          height: 100%; /* Altura completa del panel */
         }
 
         iframe {
@@ -126,15 +146,8 @@ const CotizadorNegocios: React.FC = () => {
             flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
           }
 
-          .form-container,
-          .pdf-preview {
-            margin: 0; /* Quitar márgenes en pantallas pequeñas */
-            width: 100%; /* Ancho completo */
-            max-width: none; /* Sin límite de ancho */
-          }
-
-          .pdf-preview {
-            height: 400px; /* Altura fija en pantallas pequeñas */
+          .input-grid {
+            grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
           }
         }
       `}
