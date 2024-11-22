@@ -15,7 +15,10 @@ import Notes from './pages/Notes'
 import Dashboard from './pages/Dashboard'
 import Home from './pages/Home'
 import ErrorBoundary from './pages/ErrorBoundary'
-import Cotizaciones from './pages/Cotizaciones'
+import Cotizaciones from './pages/Cotizaciones/Cotizaciones.tsx'
+import Cotizacion1 from './pages/Cotizaciones/Cotizacion1'
+import Cotizacion2 from './pages/Cotizaciones/Cotizacion2'
+import Cotizacion3 from './pages/Cotizaciones/Cotizacion3'
 
 const router = createBrowserRouter([
   {
@@ -61,6 +64,18 @@ const router = createBrowserRouter([
       {
         path: 'cotizaciones',
         element: <Cotizaciones />
+      },
+      {
+        path: 'cotizaciones/cotizacion1',
+        element: <Cotizacion1 />
+      },
+      {
+        path: 'cotizaciones/cotizacion2',
+        element: <Cotizacion2 />
+      },
+      {
+        path: 'cotizaciones/cotizacion3',
+        element: <Cotizacion3 />
       }
     ]
   }
