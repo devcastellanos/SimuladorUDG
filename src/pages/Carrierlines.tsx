@@ -156,7 +156,7 @@ const CotizadorNegocios: React.FC = () => {
         </ResizablePanel>
       </ResizablePanelGroup>
 
-      <style jsx>{`
+      <style>{`
         .title {
           font-size: 24px; /* Aumentar tamaño de fuente para el título */
           font-weight: bold; /* Negrita */

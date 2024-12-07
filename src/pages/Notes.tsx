@@ -9,9 +9,9 @@ import {
   TableRow
 } from '@/components/ui/table'
 import { Button } from '@/components/ui/button'
-import {
-  Form
-} from '@/components/ui/form'
+//import {
+  //Form
+//} from '@/components/ui/form'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 
@@ -38,7 +38,7 @@ const NotasReciboAlmacen: React.FC = () => {
     <Layout>
       <div style={styles.container}>
         <h1 style={styles.heading}>Recibo de Almacén - Notas</h1>
-        <Form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div style={styles.notesSection}>
             <Label htmlFor='publicNotes' style={styles.label}>
               Haga clic para seleccionar notas de la lista de cláusulas
@@ -63,7 +63,7 @@ const NotasReciboAlmacen: React.FC = () => {
               Help
             </Button>
           </div>
-        </Form>
+        </form>
 
         {/* Tabla para mostrar las notas almacenadas */}
         <Table>

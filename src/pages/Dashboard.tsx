@@ -2,7 +2,8 @@ import { ReactNode } from 'react'
 import Layout from '@/components/Layout'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { IconAnalyze, IconBox, IconBrandTeams, IconCalculator, IconDashboard, IconForms, IconGraph, IconLayoutDashboard, IconLocationPin, IconNotes, IconPokerChip, IconQuestionMark, IconSortAscendingNumbers, IconTimelineEvent, IconTruck, IconTruckDelivery, IconTruckLoading, IconUserQuestion, IconWriting } from '@tabler/icons-react'
+//import { IconAnalyze, IconBox, IconBrandTeams, IconCalculator, IconDashboard, IconForms, IconGraph, IconLayoutDashboard, IconLocationPin, IconNotes, IconPokerChip, IconQuestionMark, IconSortAscendingNumbers, IconTimelineEvent, IconTruck, IconTruckDelivery, IconTruckLoading, IconUserQuestion, IconWriting } from '@tabler/icons-react'
+import { IconCalculator, IconNotes } from '@tabler/icons-react'
 import { Link } from 'react-router-dom'
 
 const Content = (): ReactNode => {
@@ -14,16 +15,29 @@ const Content = (): ReactNode => {
             <CardTitle>Simulador de negocios UDG</CardTitle>
           </CardHeader>
           <CardContent>
+
+          <h1 className='mb-4 text-2xl'>Customer-Vendors</h1>
+            <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+              <Link to='/cotizaciones/customer_vendor' className='flex flex-col justify-between p-6 font-semibold text-center transition-all border rounded-lg shadow-lg bg-muted/25 hover:bg-muted/50'>
+                <div className='mx-auto'>
+                  <IconNotes size={64} stroke={2} />
+                </div>
+                <p>Customer-Vendors</p>
+              </Link>
+            </div>
+           <Separator className='my-4' />
+
             <h1 className='mb-4 text-2xl'>Cotización</h1>
             <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
-              <Link to='/cotizaciones' className='flex flex-col justify-between p-6 font-semibold text-center transition-all border rounded-lg shadow-lg bg-muted/25 hover:bg-muted/50'>
+              <Link to='/cotizaciones/cotizacion1' className='flex flex-col justify-between p-6 font-semibold text-center transition-all border rounded-lg shadow-lg bg-muted/25 hover:bg-muted/50'>
                 <div className='mx-auto'>
                   <IconCalculator size={64} stroke={2} />
                 </div>
                 <p>Cotizaciones</p>
               </Link>
-
             </div>
+
+            {/* 
             <Separator className='my-4' />
             <h1 className='mb-4 text-2xl'>Booking</h1>
             <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
@@ -68,7 +82,8 @@ const Content = (): ReactNode => {
                 </div>
                 <p>General</p>
               </Link>
-            </div>
+            </div>*/}
+            
           </CardContent>
         </Card>
       </div>

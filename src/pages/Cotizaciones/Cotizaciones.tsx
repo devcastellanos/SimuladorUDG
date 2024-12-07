@@ -1,8 +1,9 @@
 import { ReactNode } from 'react'
 import Layout from '@/components/Layout'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Separator } from '@/components/ui/separator'
-import { IconAnalyze, IconBox, IconBrandTeams, IconCalculator, IconDashboard, IconForms, IconGraph, IconLayoutDashboard, IconLocationPin, IconNotes, IconNumber, IconNumber1, IconNumber1Small, IconNumber2Small, IconNumber3, IconNumber3Small, IconPokerChip, IconQuestionMark, IconSortAscendingNumbers, IconTimelineEvent, IconTruck, IconTruckDelivery, IconTruckLoading, IconUserQuestion, IconWriting } from '@tabler/icons-react'
+//import { Separator } from '@/components/ui/separator'
+//import { IconAnalyze, IconBox, IconBrandTeams, IconCalculator, IconDashboard, IconForms, IconGraph, IconLayoutDashboard, IconLocationPin, IconNotes, IconNumber, IconNumber1, IconNumber1Small, IconNumber2Small, IconNumber3, IconNumber3Small, IconPokerChip, IconQuestionMark, IconSortAscendingNumbers, IconTimelineEvent, IconTruck, IconTruckDelivery, IconTruckLoading, IconUserQuestion, IconWriting } from '@tabler/icons-react'
+import {  IconNumber1Small, IconNumber2Small} from '@tabler/icons-react'
 import { Link } from 'react-router-dom'
 
 const Content = (): ReactNode => {
@@ -23,19 +24,14 @@ const Content = (): ReactNode => {
                 <p>Cotización 1</p>
               </Link>
 
-              <Link to='/cotizaciones/cotizacion2' className='flex flex-col justify-between p-6 font-semibold text-center transition-all border rounded-lg shadow-lg bg-muted/25 hover:bg-muted/50'>
+              <Link to='/cotizaciones/customer_vendor' className='flex flex-col justify-between p-6 font-semibold text-center transition-all border rounded-lg shadow-lg bg-muted/25 hover:bg-muted/50'>
                 <div className='mx-auto'>
                   <IconNumber2Small size={64} stroke={2} />
                 </div>
-                <p>Cotización 2</p>
+                <p>customer_vendor</p>
               </Link>
 
-              <Link to='/cotizaciones/cotizacion3' className='flex flex-col justify-between p-6 font-semibold text-center transition-all border rounded-lg shadow-lg bg-muted/25 hover:bg-muted/50'>
-                <div className='mx-auto'>
-                  <IconNumber3Small size={64} stroke={2} />
-                </div>
-                <p>Cotización 3</p>
-              </Link>
+
 
             </div>
             

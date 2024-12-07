@@ -125,7 +125,7 @@ const General: React.FC = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .container {
           display: flex;
           justify-content: space-between;

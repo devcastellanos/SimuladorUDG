@@ -11,11 +11,12 @@ const TeamsPage = () => {
     { id: 3, name: 'Equipo Gamma', membersCount: 4, members: ['Isaac', 'Jack', 'Karen', 'Liam'] }
   ])
 
-  const [user, setUser] = useState({ id: 1, name: 'Juan Pérez', teamId: null })
-  const [newTeamName, setNewTeamName] = useState('')
-  const [selectedTeamId, setSelectedTeamId] = useState(null)
 
-  const handleTeamUpdate = (teamId, action) => {
+  const [user, setUser] = useState({ id: 1, name: 'Juan Pérez', teamId: null as number | null}) 
+  const [newTeamName, setNewTeamName] = useState('')
+  const [selectedTeamId, setSelectedTeamId] = useState<number | null>(null)
+
+  const handleTeamUpdate = (teamId : number | null, action: string) => {
     setTeams(prevTeams =>
       prevTeams.map(team => {
         if (team.id === teamId) {
@@ -34,17 +35,21 @@ const TeamsPage = () => {
     )
   }
 
-  const joinTeam = (teamId) => {
+  const joinTeam = (teamId: any ) => {
     handleTeamUpdate(teamId, 'join')
     setUser({ ...user, teamId })
   }
 
   const leaveTeam = () => {
-    handleTeamUpdate(user.teamId, 'leave')
-    setUser({ ...user, teamId: null })
+    if (user.teamId !== null) {
+      handleTeamUpdate(user.teamId, 'leave');
+      setUser({ ...user, teamId: null });
+    } else {
+      console.log("El usuario no está en ningún equipo.");
+    }
   }
 
-  const deleteTeam = (teamId) => {
+  const deleteTeam = (teamId: number |null) => {
     setTeams(prevTeams => prevTeams.filter(team => team.id !== teamId))
   }
 
@@ -62,7 +67,7 @@ const TeamsPage = () => {
     setUser({ ...user, teamId: newTeam.id })
   }
 
-  const renderTeamMembers = (members) => {
+  const renderTeamMembers = (members: string[]) => {
     if (!Array.isArray(members) || members.length === 0) {
       return <p>No hay miembros en este equipo.</p>
     }
@@ -88,7 +93,7 @@ const TeamsPage = () => {
               <h1 className='text-2xl font-bold'>¡Eres parte de un equipo!</h1>
               <p>Estás en el equipo {currentTeam?.name}</p>
               <h2 className='text-xl font-bold'>Integrantes del equipo:</h2>
-              {renderTeamMembers(((currentTeam?.members) != null) || [])}
+              {renderTeamMembers(currentTeam?.members || [])}
               <Button className='mt-4 text-white bg-red-500' onClick={leaveTeam}>
                 Salir del equipo
               </Button>

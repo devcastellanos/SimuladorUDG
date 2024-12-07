@@ -12,7 +12,23 @@ import {
 } from '@/components/ui/resizable'
 
 const CotizadorNegocios: React.FC = () => {
-  const [quoteData, setQuoteData] = useState({
+  interface QuoteData {
+    numeroDe: string;
+    fecha: string;
+    validaHasta: string;
+    empleado: string;
+    terminoPago: string;
+    origen1: string;
+    destino1: string;
+    origen2: string;
+    destino2: string;
+    origen3: string;
+    destino3: string;
+    tipoMovimiento: string;
+    opciones: string;
+  }
+
+  const [quoteData, setQuoteData] = useState<QuoteData>({
     numeroDe: '',
     fecha: '',
     validaHasta: '',
@@ -32,10 +48,10 @@ const CotizadorNegocios: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setQuoteData(prevData => ({
+    setQuoteData((prevData) => ({
       ...prevData,
-      [name]: value
-    }))
+      [name as keyof QuoteData]: value,
+    }));
   }
 
   const generatePDF = () => {
@@ -66,7 +82,7 @@ const CotizadorNegocios: React.FC = () => {
                       type='text'
                       id={key}
                       name={key}
-                      value={quoteData[key]}
+                      value={quoteData[key as keyof QuoteData]}
                       onChange={handleChange}
                       placeholder={`Ingrese ${key.replace(/([A-Z])/g, ' $1').toLowerCase()}`}
                     />
@@ -99,7 +115,7 @@ const CotizadorNegocios: React.FC = () => {
         </ResizablePanelGroup>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .container {
           display: flex;
           justify-content: flex-start; /* Cambiar a alineación izquierda */
@@ -150,7 +166,8 @@ const CotizadorNegocios: React.FC = () => {
             grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
           }
         }
-      `}
+      `
+      }
       </style>
     </Layout>
   )

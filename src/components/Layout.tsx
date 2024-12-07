@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
-import { IconHome, IconMenu2, IconPackage, IconSettings, IconLocationSearch, IconLogout2, IconUser, IconTimelineEventFilled, IconTimelineEvent, IconTimelineEventX, IconCalendarEvent, IconTimelineEventPlus, IconTruckLoading, IconTruckReturn, IconTruckDelivery, IconImageInPicture, IconDashboard, IconLayoutDashboard, IconBrandTeams, IconUserQuestion, IconPokerChip, IconWriting, IconCapProjecting, IconPointerCode, IconFileAlert, IconFileCheck, IconAnalyze, IconBrandProducthunt, IconBox, IconNotes, IconForms, IconCalculator, IconPick } from '@tabler/icons-react'
+//import { IconHome, IconMenu2, IconPackage, IconSettings, IconLocationSearch, IconLogout2, IconUser, IconTimelineEventFilled, IconTimelineEvent, IconTimelineEventX, IconCalendarEvent, IconTimelineEventPlus, IconTruckLoading, IconTruckReturn, IconTruckDelivery, IconImageInPicture, IconDashboard, IconLayoutDashboard, IconBrandTeams, IconUserQuestion, IconPokerChip, IconWriting, IconCapProjecting, IconPointerCode, IconFileAlert, IconFileCheck, IconAnalyze, IconBrandProducthunt, IconBox, IconNotes, IconForms, IconCalculator, IconPick } from '@tabler/icons-react'
+import { IconHome, IconMenu2, IconPackage, IconSettings, IconLocationSearch, IconLogout2, IconUser, IconNotes, IconCalculator } from '@tabler/icons-react'
 import defaultUser from '@/assets/images/default-user.png'
 import LayoutProps from '@/types/Layout'
 import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction, AlertDialogHeader, AlertDialogFooter } from './ui/alert-dialog'
@@ -16,6 +17,8 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
     localStorage.removeItem('user')
     useAuthStore.setState({ isLoggedIn: false })
   }
+
+   {/* Primer Bloque: Office/Quote Info */}
 
   return (
     <div className='flex flex-col w-full min-h-screen bg-muted/40'>
@@ -44,19 +47,19 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
             </TooltipTrigger>
             <TooltipContent side='right'>Menú Principal</TooltipContent>
           </Tooltip>
-          <Tooltip>
+           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                to='/notes'
+                to='/cotizaciones/customer_vendor'
                 className='flex items-center justify-center transition-colors rounded-lg h-9 w-9 text-muted-foreground hover:text-foreground md:h-8 md:w-8'
               >
                 <IconNotes className='w-5 h-5' />
-                <span className='sr-only'>Notas</span>
+                <span className='sr-only'>Customer</span>
               </Link>
             </TooltipTrigger>
-            <TooltipContent side='right'>Notas</TooltipContent>
+            <TooltipContent side='right'>Customer</TooltipContent>
           </Tooltip>
-          <Tooltip>
+          {/* <Tooltip>
             <TooltipTrigger asChild>
               <Link
                 to='/products'
@@ -67,8 +70,8 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
               </Link>
             </TooltipTrigger>
             <TooltipContent side='right'>Productos</TooltipContent>
-          </Tooltip>
-          <Tooltip>
+          </Tooltip>*/}
+         {/* <Tooltip>
             <TooltipTrigger asChild>
               <Link
                 to='/general'
@@ -79,8 +82,8 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
               </Link>
             </TooltipTrigger>
             <TooltipContent side='right'>General</TooltipContent>
-          </Tooltip>
-          <Tooltip>
+          </Tooltip>*/}
+          {/*<Tooltip>
             <TooltipTrigger asChild>
               <Link
                 to='/carrierlines'
@@ -91,11 +94,11 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
               </Link>
             </TooltipTrigger>
             <TooltipContent side='right'>Transportistas</TooltipContent>
-          </Tooltip>
+          </Tooltip>*/}
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                to='/cotizaciones'
+                to='/cotizaciones/cotizacion1'
                 className='flex items-center justify-center transition-colors rounded-lg h-9 w-9 text-muted-foreground hover:text-foreground md:h-8 md:w-8'
               >
                 <IconCalculator className='w-5 h-5' />
@@ -104,7 +107,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
             </TooltipTrigger>
             <TooltipContent side='right'>Cotizaciones</TooltipContent>
           </Tooltip>
-          <Tooltip>
+          {/*<Tooltip>
             <TooltipTrigger asChild>
               <Link
                 to='/pickup'
@@ -115,7 +118,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
               </Link>
             </TooltipTrigger>
             <TooltipContent side='right'>PickUp</TooltipContent>
-          </Tooltip>
+          </Tooltip>*/}
         </nav>
         <nav className='flex flex-col items-center gap-4 px-2 mt-auto sm:py-4'>
           <Tooltip>

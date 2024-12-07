@@ -138,7 +138,7 @@ const Pickup: React.FC = () => {
         </ResizablePanelGroup>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .container {
           padding: 40px;
           max-width: 100%;

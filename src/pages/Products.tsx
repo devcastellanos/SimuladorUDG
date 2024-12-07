@@ -1,13 +1,20 @@
-import React, { useState } from 'react'
-import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { useState } from 'react'
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import Layout from '@/components/Layout'
 
 const Productos = () => {
-  const [productos, setProductos] = useState([])
-  const [selectedProduct, setSelectedProduct] = useState(null)
+  //const [productos, setProductos] = useState([])
+  //const [selectedProduct, setSelectedProduct] = useState(null)
+  const [productos, setProductos] = useState<
+  { estado: string; descripcion: string; piezas: number; embalaje: string; peso: number; volumen: number }[]
+>([]);
+const [selectedProduct, setSelectedProduct] = useState<{
+  index: number;
+  product: { estado: string; descripcion: string; piezas: number; embalaje: string; peso: number; volumen: number };
+} | null>(null);
   const [descripcion, setDescripcion] = useState('')
   const [piezas, setPiezas] = useState(0)
   const [embalaje, setEmbalaje] = useState('')
@@ -65,7 +72,7 @@ const Productos = () => {
     setSelectedProduct(null) // Limpiar la selección
   }
 
-  const selectProduct = (index) => {
+  const selectProduct = (index: number) => {
     setSelectedProduct({ index, product: productos[index] })
     const { descripcion, piezas, embalaje, peso, volumen } = productos[index]
     setDescripcion(descripcion)

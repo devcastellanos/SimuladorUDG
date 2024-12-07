@@ -1,0 +1,62 @@
+/* Estilos para la interfaz */
+.form-container {
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-size: 36px; /* Tamaño de fuente grande */
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .submit-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049;
+  }
+  
+  .response-message {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
